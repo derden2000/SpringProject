@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>List of all users</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}">1</td>
+            <td th:text="${user.username}">Doe</td>
+            <td th:text="${user.email}">john@example.com</td>
+            <td>
+                <a class="btn btn-success" th:href="@{/user/{id}/edit(id=${user.id})}">Edit</a>
+                <a class="btn btn-danger" th:href="@{/user/{id}/delete(id=${user.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-default" th:href="@{/adduser}">New user</a>
+</div>
+
+</body>
+</html>
